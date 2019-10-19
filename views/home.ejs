@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
 <head>
-  <title>Listagem de Autor</title>
-  <head>
+  <title>Weblioteca</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -71,6 +69,7 @@
 </style>
 </head>
 <body>
+
 <div class="navbar">
 <a href="/">Inicio</a>
   <div class="dropdown">
@@ -78,40 +77,22 @@
   <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-content" id="myDropdown">
-    <a href="/views">Cadastro</a>
+    <a href="/view">Cadastro</a>
     <a href="/show">Lista</a>
     </div>
    </div> 
   <a href="#b">b</a> 
 </div>
 
-<h2>Registros</h2>
-  <table border="1">
-    <thead>
-        <tr>
-            <td>Nome</td>
-            <td>Sobrenome</td>
-            <td>Data</td>
-            <td>Ação</td>
-        </tr>
-    </thead>
-    <tbody>
-    <% Autores.forEach(function(details) { %>
-        <tr>
-            <td><%= details.name %></td>
-            <td><%= details.surname %></td>
-            <td><%= details.date %></td>
-            <td><a href="/edit/<%= details._id %>">Editar</a> - <a href="/delete/<%= details._id %>">Deletar</a></td>
-        </tr>
-        <% }) %>
-    </tbody>
-  </table>
-  <button><a href="/">Novo</a></button>
-</body>
+<h3>Bem-vindo a Weblioteca!</h3>
 <script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
+
+// Close the dropdown if the user clicks outside of it
 window.onclick = function(e) {
   if (!e.target.matches('.dropbtn')) {
   var myDropdown = document.getElementById("myDropdown");
@@ -121,4 +102,5 @@ window.onclick = function(e) {
   }
 }
 </script>
+</body>
 </html>

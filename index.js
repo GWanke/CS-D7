@@ -1,5 +1,3 @@
-// index.js
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient
@@ -27,10 +25,10 @@ MongoClient.connect(uri, (err, client) => {
 app.set('view engine', 'ejs')
 
 app.get('/', (req, res) => {
-	res.render('view.ejs')
+  res.render('home.ejs')
 })
 app.get('/', (req, res) => {
-	let cursor = db.collection('Autores').find()
+  let cursor = db.collection('Autores').find()
 })
 app.get('/show', (req, res) => {
     db.collection('Autores').find().toArray((err, results) => {
@@ -40,17 +38,22 @@ app.get('/show', (req, res) => {
 })
 
 app.post('/show', (req, res) => {
-	db.collection('Autores').insertOne(req.body,(err,result) =>{
-		if (err) return console.log(err)
-		console.log('Salvo no DB!')
-		res.redirect('/show')
-	})
+  db.collection('Autores').insertOne(req.body,(err,result) =>{
+    if (err) return console.log(err)
+    console.log('Salvo no DB!')
+    res.redirect('/show')
+  })
+})
+
+app.route('/view')
+.get((req,res)=>{
+  res.render('view.ejs')
 })
 
 app.route('/edit/:id')
 .get((req, res) => {
   var id = req.params.id
- 	db.collection('Autores').find(ObjectId(id)).toArray((err, result) => {
+  db.collection('Autores').find(ObjectId(id)).toArray((err, result) => {
     if (err) return res.send(err)
     res.render('edit.ejs', { Autores: result })
   })

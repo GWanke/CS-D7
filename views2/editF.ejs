@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Funcionarios</title>
+</head>
+<body>
+
+<h2>Editar Registro Funcionario</h2>
+  <% Funcionarios.forEach(function(details) { %>
+    <form action="/editF/<%= details._id %>" method="POST">
+      <input type="text" value="<%= details.CPF %>" name="CPF">
+      <input type="text" value="<%= details.name %>" name="name">
+      <input type="text" value="<%= details.surname %>" name="surname">
+      <input type="date" value="<%= details.date %>" name="date">
+      <br />
+      <button><a href="/showF">Voltar</a></button>
+      <button type="submit">Confirmar Edit</button>
+    </form>
+  <% }) %>
+
+</body>
+</html>
